@@ -1,8 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { tap } from 'rxjs';
 import { Projects } from '../models/mocks/project.mock';
 import { Project } from '../models/project.model';
+import { ProjectService } from '../services/project.service';
 
 @Component({
   selector: 'app-project-list',
@@ -11,7 +13,8 @@ import { Project } from '../models/project.model';
 })
 export class ProjectListComponent implements OnInit {
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private projectService: ProjectService,
+    private activatedRoute: ActivatedRoute) { }
 
   searchText: string;
 
@@ -19,17 +22,30 @@ export class ProjectListComponent implements OnInit {
   projectCount: number;
 
   ngOnInit(): void {
-    this.projectCount = this.projects?.length;
-    console.log(this.projectCount);
-    this.httpClient.get<Project[]>("https://run.mocky.io/v3/ebbf0cde-f472-400e-b33e-6c9b45193124")
-      .pipe(tap(x => console.log(x)))
-      .subscribe((data: Project[]) => {
-        this.projects = data;
-        this.projectCount = this.projects.length;
 
-      });
+    this.activatedRoute.params.subscribe(param => {
+      console.log('parametre:', param["id"]);
+      param["id"] != undefined ?
+        this.projectService.getProjectsByCategoryId(param["id"])
+          .subscribe((data: Project[]) => {
+            this.projects = data;
+            this.projectCount = this.projects.length;
+          })
+        :
+        this.projectService.getProjects()
+          .subscribe((x: Project[]) => {
+            this.projects = x;
+            this.projectCount = this.projects.length; 
+          })
+    });
 
-    console.log('projects: ' + this.projects);
+    // this.projectCount = this.projects?.length;
+    // console.log(this.projectCount);
+    // this.projectService.getProjects()
+    //   .subscribe((data: Project[]) => {
+    //     this.projects = data;
+    //     this.projectCount = this.projects.length;
+    //   });
     //https://localhost:44313/api/Projects");
 
 

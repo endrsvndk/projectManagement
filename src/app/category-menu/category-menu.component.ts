@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Category } from '../models/category.model';
 import { categories } from '../models/mocks/category.mock';
+import { CategoryService } from '../services/category.service';
 
 
 @Component({
@@ -10,11 +11,13 @@ import { categories } from '../models/mocks/category.mock';
 })
 export class CategoryMenuComponent implements OnInit {
 
-  constructor() { }
+  constructor(private categoryService: CategoryService) { }
 
   categories:Category[] = categories;
 
   ngOnInit(): void {
+    this.categoryService.getCategories()
+                        .subscribe((data:Category[])=>this.categories=data);
   }
 
 }

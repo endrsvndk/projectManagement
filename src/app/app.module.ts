@@ -10,7 +10,9 @@ import { ProjectComponent } from './project/project.component';
 import { ProjectListComponent } from './project-list/project-list.component';
 import { FormsModule } from '@angular/forms';
 import { ProjectSearchPipe } from './pipes/project-search.pipe';
-import { HttpClientModule } from '@angular/common/http'
+import { HttpClientModule } from '@angular/common/http';
+import { AddCategoryComponent } from './add-category/add-category.component';
+import { AddProjectComponent } from './add-project/add-project.component'
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { HttpClientModule } from '@angular/common/http'
     TaskListComponent,
     ProjectComponent,
     ProjectListComponent,
-    ProjectSearchPipe
+    ProjectSearchPipe,
+    AddCategoryComponent,
+    AddProjectComponent
   ],
   imports: [
     BrowserModule,
