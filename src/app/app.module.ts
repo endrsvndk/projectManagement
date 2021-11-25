@@ -9,6 +9,7 @@ import { TaskListComponent } from './task-list/task-list.component';
 import { ProjectComponent } from './project/project.component';
 import { ProjectListComponent } from './project-list/project-list.component';
 import { FormsModule } from '@angular/forms';
+import { ProjectSearchPipe } from './pipes/project-search.pipe';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { FormsModule } from '@angular/forms';
     CategoryMenuComponent,
     TaskListComponent,
     ProjectComponent,
-    ProjectListComponent
+    ProjectListComponent,
+    ProjectSearchPipe
   ],
   imports: [
     BrowserModule,

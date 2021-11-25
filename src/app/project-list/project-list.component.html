@@ -1,5 +1,13 @@
 <div class="container">
-   <div class="col-12" *ngFor="let project of projects">
-       <app-project [current]="project"></app-project>
-   </div>
+    <div class="row m-2">
+        <div class="col-12">
+            <input type="text" placeholder="kelime giriniz" [(ngModel)]="searchText" name="" id="" class="form-control">
+        </div>
+    </div>
+   <div class="row m-3">
+    <div class="col-12" *ngFor="let project of projects | projectSearch : searchText ">
+        <app-project [current]="project"></app-project>
+    </div>
+   </div> 
+  
 </div>

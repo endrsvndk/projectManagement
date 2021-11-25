@@ -11,9 +11,16 @@ export class ProjectListComponent implements OnInit {
 
   constructor() { }
 
+  searchText:string;
+
   projects: Project[] = Projects;
 
   ngOnInit(): void {
   }
+
+  // sample(event:Event){
+  //   console.log('adsds');
+  //   console.log(event);
+  // }
 
 }
