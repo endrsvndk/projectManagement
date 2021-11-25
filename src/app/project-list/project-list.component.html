@@ -1,13 +1,18 @@
-<div class="container">
+<div class="container" *ngIf="projectCount > 0; else noProject">
     <div class="row m-2">
         <div class="col-12">
             <input type="text" placeholder="kelime giriniz" [(ngModel)]="searchText" name="" id="" class="form-control">
         </div>
     </div>
-   <div class="row m-3">
-    <div class="col-12" *ngFor="let project of projects | projectSearch : searchText ">
+   <div class="row m-3" *ngFor="let project of projects | projectSearch : searchText">
+    <div class="col-12" *ngIf="projects.length >0 ; else noProject" >
         <app-project [current]="project"></app-project>
     </div>
    </div> 
   
 </div>
+<ng-template #noProject>
+   <div class="alert alert-dark">
+       Proje bulunamadı!
+   </div>
+</ng-template>

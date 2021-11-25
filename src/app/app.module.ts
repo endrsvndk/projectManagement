@@ -10,6 +10,7 @@ import { ProjectComponent } from './project/project.component';
 import { ProjectListComponent } from './project-list/project-list.component';
 import { FormsModule } from '@angular/forms';
 import { ProjectSearchPipe } from './pipes/project-search.pipe';
+import { HttpClientModule } from '@angular/common/http'
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { ProjectSearchPipe } from './pipes/project-search.pipe';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
