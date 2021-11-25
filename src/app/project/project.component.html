@@ -1,6 +1,12 @@
 <div class="card">
     <div class="card-body">
-        <h4 class="card-title bg-info text-white rounded-2 p-2">{{project.name | titlecase }}</h4>
-        <p class="card-text">{{project.description}}</p>
+        <h4 class="card-title bg-info text-white rounded-2 p-2">{{project.name | titlecase }}
+            <span [ngClass]=" taskIsFound ? 'show':'hide'" class="badge bg-dark rounded-pill  float-end"  >
+                Kalan görev: {{totalTaskCount}}
+            </span>
+        </h4>
+        <p class="card-text">{{project.description | lowercase}}</p>
+       
+        <app-task-list [project]="project" ></app-task-list>
     </div>
 </div>

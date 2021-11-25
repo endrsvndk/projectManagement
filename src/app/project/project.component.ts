@@ -15,4 +15,13 @@ export class ProjectComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  taskIsFound:boolean = false;
+  totalTaskCount:number |undefined =0;
+
+  ngAfterContentChecked():void{
+    console.log('after content checked tetiklendi!')
+    this.totalTaskCount = this.project.tasks?.filter(t=>!t.isCompleted).length;  
+    this.taskIsFound = this.totalTaskCount != undefined && this.totalTaskCount>0
+  }
+
 }

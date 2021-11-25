@@ -1,1 +1,5 @@
-<p>task-list works!</p>
+<ul class="list-group">
+    <li class="list-group-item" *ngFor="let task of project.tasks" >
+        <input type="checkbox" name="" id="" [(ngModel)]="task.isCompleted" > {{task.name}} Bitmesi gereken tarih: {{task.expectedEndDate | date:'dd.MM.yyyy' }}
+    </li>
+</ul>
