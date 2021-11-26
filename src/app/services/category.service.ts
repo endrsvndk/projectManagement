@@ -12,5 +12,11 @@ export class CategoryService {
 
   getCategories():Observable<Category[]>{
     return this.httpClient.get<Category[]>('https://localhost:44313/api/Categories');
-  } 
+  }
+  
+  addCategory(category:Category):Observable<Category>{
+    
+    return this.httpClient.post('https://localhost:44313/api/Categories',category);
+  
+  }
 }
