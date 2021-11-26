@@ -1,1 +1,23 @@
-<p>add-project works!</p>
+<form #addNewProject="ngForm" (ngSubmit)="addProject(addNewProject)">
+ <div class="m-2">
+     <label for="" class="form-label">Proje Adı</label>
+     <input type="text" name="name" #projectName="ngModel" required [(ngModel)]="project.name" id="" class="form-control">
+     <span class="alert alert-danger form-control m-3" *ngIf="projectName.invalid && projectName.dirty">Proje adı olmalıdır.</span>
+ </div>
+ <div class="m-2">
+    <label for="" class="form-label">Proje Açıklaması</label>
+    <input type="text" #description="ngModel" name="description" required [(ngModel)]="project.description" id="" class="form-control">
+    <span class="alert alert-danger form-control m-3" *ngIf="description.invalid && description.pristine">Proje açıklaması olmalıdır.</span>
+    
+</div>
+<div class="m-2">
+    <label for="" class="form-label">Kategori Seçiniz</label>
+    <select #selectedCategory="ngModel" class="form-control" required name="categoryId" [(ngModel)]="project.categoryId">
+        <option value="">Seçiniz..</option> 
+        <option value="{{category.id}}" *ngFor="let category of categories">{{category.name}}</option> 
+    </select>    
+    <span class="alert alert-danger form-control m-3" *ngIf="selectedCategory.invalid && selectedCategory.untouched">Lütfen kategori seçiniz...</span>
+
+</div>
+<button type="submit" class="btn btn-danger">Proje Ekle</button>
+</form>
